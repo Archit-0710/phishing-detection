@@ -116,6 +116,20 @@ def statistical_report(url): return 1
 
 app = FastAPI()
 
+# List of allowed origins. You should add your deployed frontend URL here too!
+origins = [
+    "http://localhost:5173",
+    # "https://your-production-frontend-domain.com", 
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows specific origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
 # Load the trained model
 try:
     model = joblib.load('app/model.joblib')
