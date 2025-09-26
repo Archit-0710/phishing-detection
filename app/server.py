@@ -8,6 +8,9 @@ import dns.resolver
 import re
 import sys
 import numpy as np
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # --- Feature Extraction Functions ---
 
